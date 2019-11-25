@@ -59,23 +59,12 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.13.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.13" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.18" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-spring-boot:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-metrics:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: io.vavr:vavr:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: io.vavr:vavr-match:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-spring-boot-common:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-metrics:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-circuitbreaker:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-core:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-spring:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-annotations:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-consumer:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-circularbuffer:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-framework-common:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-ratelimiter:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-retry:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-bulkhead:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.16.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.0.0" level="project" />
