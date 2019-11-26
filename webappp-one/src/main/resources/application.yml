@@ -1,6 +1,8 @@
 logging:
   level:
     root: INFO
+    io:
+      github: OFF
 
 endpoints:
   actuator:

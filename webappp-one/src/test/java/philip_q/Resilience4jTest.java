@@ -1,9 +1,8 @@
 package philip_q;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -77,18 +76,17 @@ public class Resilience4jTest {
 				// String result = cb.executeSupplier(service::heavyFacadeOperation);
 			}
 			catch (Exception e) {
-				log.info(e.toString());
-				// System.out.println(e);
+				System.out.println(e.toString());
 			}
 		}
 
-		int miniumToTriggerCircuitBreaker = registry.getDefaultConfig().getMinimumNumberOfCalls();
+		int minimumToTriggerCircuitBreaker = registry.getDefaultConfig().getMinimumNumberOfCalls();
 
-		assertThat(miniumToTriggerCircuitBreaker).isEqualTo(100);
+		assertThat(minimumToTriggerCircuitBreaker).isEqualTo(100);
 
-		verify(service, times(miniumToTriggerCircuitBreaker)).resourceCall1();
-		verify(service, times(miniumToTriggerCircuitBreaker)).resourceCall2();
-		verify(service, times(miniumToTriggerCircuitBreaker)).resourceCall3();
+		verify(service, times(minimumToTriggerCircuitBreaker)).resourceCall1();
+		verify(service, times(minimumToTriggerCircuitBreaker)).resourceCall2();
+		verify(service, times(minimumToTriggerCircuitBreaker)).resourceCall3();
 	}
 
 	@Test
@@ -114,7 +112,7 @@ public class Resilience4jTest {
 			}
 			catch (Exception e) {
 				if (e instanceof CallNotPermittedException) {
-					log.info(e.toString());
+					System.out.println(e.toString());
 					TimeUnit.SECONDS.sleep(2);
 				}
 			}
@@ -133,13 +131,15 @@ public class Resilience4jTest {
 		Bulkhead bh = registry.bulkhead("semaphore");
 		Supplier<String> wrapped = Bulkhead.decorateSupplier(bh, service::heavyFacadeOperation);
 
+		doNothing().when(service).resourceCall3(); // because of RE for spring app
+
 		Runnable invokeMultiple = () -> {
 			for (int i = 0; i < 10; i++) {
 				try {
-					log.info(wrapped.get());
+					System.out.println(wrapped.get());
 				}
 				catch (BulkheadFullException e) {
-					log.info(e.toString());
+					System.out.println(e.toString());
 				}
 
 			}
@@ -180,7 +180,7 @@ public class Resilience4jTest {
 					wrapped.get().thenAccept(log::info);
 				}
 				catch (BulkheadFullException e) {
-					log.info(e.toString());
+					System.out.println(e.toString());
 				}
 
 			}
@@ -218,11 +218,11 @@ public class Resilience4jTest {
 		for (int i = 0; i < 10; i++) {
 			try {
 
-				wrapped.get();
-				log.info("Siccess " + i);
+				System.out.println(wrapped.get());
+				System.out.println("Siccess " + i);
 			}
 			catch (RequestNotPermitted e) {
-				log.info(e.toString());
+				System.out.println(e.toString());
 			}
 		}
 
